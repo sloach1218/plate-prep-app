@@ -1,0 +1,55 @@
+.landingPageMain {
+  text-align: center;
+}
+.landingPageMain header{
+  padding: 30px;
+  position: relative;
+  
+}
+.landingPageMain header h1{
+  font-size: 30px;
+  float:none;
+  margin-left: 0;
+  
+}
+.landingPageMain .appDescrip h3{
+  font-size:22px;
+}
+section {
+  padding: 30px;
+}
+section:first-of-type {
+  background-color: whitesmoke;
+}
+.landingPageMain form{
+  display: inline-block;
+  text-align: left;
+}
+
+.landingPageMain form input, .landingPageMain form button{
+  width:100%;
+  border: 1px solid grey;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+.landingPageMain form button{
+  display: block;
+  background-color: black;
+  padding: 10px;
+  margin: 6px auto;
+  border:none;
+  
+}
+
+.landingPageMain .registerBtn{
+  background-color: darkgrey;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+
+

@@ -1,0 +1,25 @@
+.registrationPage {
+    text-align: center;
+}
+.registrationPage form{
+    display: inline-block;
+    text-align: left;
+    margin: 90px 20px;
+  }
+.registrationPage input {
+    width: 100%;
+    border: 1px solid grey;
+    padding: 6px;
+    margin-bottom: 5px;
+}
+.registrationPage button{
+    width: 100%;
+    border: none;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+}
+.registrationPage p{
+    font-size:12px;
+    margin-bottom: 10px;
+}
