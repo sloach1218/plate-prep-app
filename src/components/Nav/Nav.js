@@ -10,7 +10,8 @@ class Nav extends React.Component {
     return (
       <nav className='mainNav'>
           
-          <Link to={'/home'} className='HomeBtn'>Recipes</Link>
+          <Link to={'/home'} className='HomeBtn'>My Recipes</Link>
+          <Link to={'/add-recipe'} className='AddRecipeBtn'>Add Recipe</Link>
           <Link to={'/'} className='LogoutBtn'>Logout</Link>
       </nav>
     );

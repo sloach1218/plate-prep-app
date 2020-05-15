@@ -38,8 +38,8 @@ export default {
         },
         {
           "id": 2,
-          "name": "chocolate chips",
-          "amount": "1/2 cup",
+          "name": "chocolate",
+          "amount": "1 pound",
           "recipeId": 2,
         },
         {

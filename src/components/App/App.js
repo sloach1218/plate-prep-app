@@ -7,6 +7,7 @@ import LandingPage from '../../routes/LandingPage/LandingPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import HomePage from '../../routes/HomePage/HomePage';
 import RecipeDetails from '../../routes/RecipeDetails/RecipeDetails';
+import AddRecipe from '../../routes/AddRecipe/AddRecipe';
 
 
 
@@ -49,6 +50,10 @@ class App extends React.Component  {
             <Route
                     path={'/recipe/:recipeId'}
                     component={RecipeDetails}
+                  />
+            <Route
+                    path={'/add-recipe'}
+                    component={AddRecipe}
                   />
         </Switch>
         </Context.Provider>
