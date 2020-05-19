@@ -6,6 +6,7 @@ nav.mainNav{
   justify-content: space-around;
   position: fixed;
   z-index: 1;
+  margin-top:85px;
 }
 nav .navBtnCont{
   text-align: center;

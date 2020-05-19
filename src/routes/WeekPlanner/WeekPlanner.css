@@ -1,0 +1,28 @@
+.weekPlannerContainer{
+  
+  padding-top: 140px;
+
+}
+.weekPlannerContainer .weekControls{
+  width: 100%;
+  overflow: auto;
+}
+.weekPlannerContainer .dayCont{
+  text-align: left;
+}
+.weekPlannerContainer h2{
+  display: inline-block;
+  margin:0;
+  padding:10px;
+}
+.weekPlannerContainer .dayCont button{
+  float: right;
+  margin: 15px;
+}
+.weekPlannerContainer ul{
+  padding: 10px;
+  margin:0;
+}
+.weekPlannerContainer li{
+  list-style-type: none;
+}

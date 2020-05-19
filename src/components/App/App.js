@@ -8,6 +8,7 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import HomePage from '../../routes/HomePage/HomePage';
 import RecipeDetails from '../../routes/RecipeDetails/RecipeDetails';
 import AddRecipe from '../../routes/AddRecipe/AddRecipe';
+import WeekPlanner from '../../routes/WeekPlanner/WeekPlanner';
 
 
 
@@ -15,19 +16,24 @@ class App extends React.Component  {
   state= {
     recipes: [],
     ingredients: [],
+    weekPlan: [],
   }
   componentDidMount(){
     this.setState({
       recipes: dummyStore.recipes,
       ingredients: dummyStore.ingredients,
+      weekPlan: dummyStore.weekPlan,
     })
+    
   }
 
   render(){
     const contextValue = {
       recipes: this.state.recipes,
       ingredients: this.state.ingredients,
+      weekPlan: this.state.weekPlan,
     }
+    
 
 
     return (
@@ -54,6 +60,10 @@ class App extends React.Component  {
             <Route
                     path={'/add-recipe'}
                     component={AddRecipe}
+                  />
+            <Route
+                    path={'/meal-planner'}
+                    component={WeekPlanner}
                   />
         </Switch>
         </Context.Provider>

@@ -49,4 +49,25 @@ export default {
             "recipeId": 3,
         }
       ],
-  }
+      "weekPlan":[
+        {
+          "date": "Monday, May 17",
+          "recipes": [
+            "PB & J",
+            "Smoothie",
+            "salad",
+            "Grandma's Lasagna",
+          ],
+        },
+        {
+          "date": "Tuesday, May 18",
+          "recipes": [
+            "PB & J",
+            "Smoothie",
+            "salad",
+            "Grandma's Lasagna",
+          ],
+        },
+      
+      ]
+  };
