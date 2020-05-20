@@ -5,3 +5,13 @@
   max-width: 600px;
   overflow: auto;
 }
+.Recipe__details ul {
+  padding-left: 0;
+}
+
+.Recipe__details ul li{
+  list-style: none;
+}
+.Recipe__details ol li{
+  text-align: left;
+}

@@ -12,7 +12,8 @@ class RecipeDetails extends React.Component {
 
   renderDirections(recipe) {
       if(recipe.directions){
-        return recipe.directions.map(step => <li>{step}</li>)
+        return recipe.directions.map((step, index) => <li key={index}>{step}</li>)
+        
       }
   }
 
@@ -33,7 +34,7 @@ class RecipeDetails extends React.Component {
               
               <h2>{recipe.name}</h2>
               <h3>Ingredients</h3>
-              <ul>{recipeIngredients.map(ingredient => <li>{ingredient.name} - {ingredient.amount}</li>)}</ul>
+              <ul>{recipeIngredients.map(ingredient => <li key={ingredient.name}>{ingredient.amount} - {ingredient.name}</li>)}</ul>
               <h3>Directions</h3>
               <ol>{this.renderDirections(recipe)}</ol>
               

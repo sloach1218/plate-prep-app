@@ -43,7 +43,7 @@ class AddRecipe extends React.Component {
     }
     return (
       <div  className="addMealModal">
-        <div onClick={() => {
+        <div className="closeBtn" onClick={() => {
               this.props.onClose()
             }}>Close</div>
         <form className='AddRecipeForm' onSubmit={e => this.handleSubmit(e)}>

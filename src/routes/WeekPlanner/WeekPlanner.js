@@ -25,12 +25,15 @@ class HomePage extends React.Component {
       
   }}
   
-  renderWeek(){
+  componentDidMount(){
     let date = this.state.date
     if (date === null){
-       date = new Date()
-       this.setState({date: date})
-    }
+      date = new Date()
+      this.setState({date: date})
+   }
+  }
+  renderWeek(){
+    let date = this.state.date
     const week = getWeek(date);
 
     
@@ -94,7 +97,7 @@ class HomePage extends React.Component {
         <Nav />
         
         <div className="weekPlannerContainer">
-          {this.renderWeek()}
+          {this.state.date && this.renderWeek()}
         </div>
         <AddMeal onClose={this.showModal} show={this.state.show} />
       </div>

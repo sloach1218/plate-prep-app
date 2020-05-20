@@ -1,12 +1,12 @@
 nav.mainNav{
   width:100%;
-  background-color: whitesmoke;
-  padding: 15px 10px;
+  background-color: #970014;
+  padding: 20px 10px;
   display: flex;
   justify-content: space-around;
   position: fixed;
   z-index: 1;
-  margin-top:85px;
+  bottom: 0;
 }
 nav .navBtnCont{
   text-align: center;
@@ -16,7 +16,8 @@ nav a{
   padding:0 5px;
   text-decoration: none;
   font-weight: 600;
-  color: #019c7c;
+  color: white;
   display: block;
+  cursor: pointer;
 }
 

@@ -10,7 +10,8 @@ export default class RecipeListItem extends Component {
     return (
       <Link 
           to={{pathname:`/recipe/${recipe.id}`, state: {id:recipe.id}}} 
-          className='RecipeListItem'>
+          className='RecipeListItem'
+          key={recipe.name}>
         <div className='RecipeListItem__container'>
             <p>{recipe.name}</p>
         </div>

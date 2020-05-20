@@ -1,4 +1,6 @@
 .RecipeListItem{
     padding:5px;
     width: 100%;
+    background-color: whitesmoke;
+    margin: 5px 10px;
 }

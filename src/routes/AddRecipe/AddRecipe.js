@@ -62,15 +62,17 @@ class AddRecipe extends React.Component {
     const amount = this.state.ingredientamount.value;
     const name = this.state.ingredientname.value;
     const newIngredient = [{"name":name, "amount":amount}]
-    
-    this.setState(state => {
+    if(name === ''){
+
+    } else{this.setState(state => {
       const ingredients = state.ingredients.concat(newIngredient);
       return{
         ingredients
       }
     })
     this.setState({ingredientamount: { value: ''}});
-    this.setState({ingredientname: { value: ''}});
+    this.setState({ingredientname: { value: ''}});}
+    
 
   }
   createAnotherStep(){
