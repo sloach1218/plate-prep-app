@@ -53,19 +53,19 @@ export default {
         {
           "date": "Monday, May 17",
           "recipes": [
-            "PB & J",
-            "Smoothie",
-            "salad",
-            "Grandma's Lasagna",
+            "Breakfast - Smoothie",
+            "Lunch - salad",
+            "Snack - PB & J",
+            "Dinner - Grandma's Lasagna",
           ],
         },
         {
           "date": "Tuesday, May 18",
           "recipes": [
-            "PB & J",
-            "Smoothie",
-            "salad",
-            "Grandma's Lasagna",
+            "Breakfast - Smoothie",
+            "Lunch - salad",
+            "Snack - PB & J",
+            "Dinner - Grandma's Lasagna",
           ],
         },
       
