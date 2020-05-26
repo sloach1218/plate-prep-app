@@ -3,6 +3,8 @@ import './AddRecipe.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import ValidationError from '../../ValidationError';
+import RecipeApiService from '../../services/recipe-api-service';
+
 
 
 class AddRecipe extends React.Component {
@@ -54,18 +56,36 @@ class AddRecipe extends React.Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    console.log('submitted')
+
+    const { name } = ev.target
+    const ingredients = this.state.ingredients
+    const directions = this.state.directions
+    
+    RecipeApiService.postRecipe({
+      name: name.value,
+      ingredients: ingredients,
+      directions: directions
+    })
+      .then(recipe => {
+        name.value = ''
+        window.location.href = '/home'
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
 
   }
 
   createAnotherIngredient(){
     const amount = this.state.ingredientamount.value;
     const name = this.state.ingredientname.value;
-    const newIngredient = [{"name":name, "amount":amount}]
+    const newIngredient = amount + ' - ' + name
+    console.log(newIngredient)
     if(name === ''){
 
     } else{this.setState(state => {
       const ingredients = state.ingredients.concat(newIngredient);
+      console.log(this.state.ingredients)
       return{
         ingredients
       }
@@ -114,7 +134,7 @@ class AddRecipe extends React.Component {
             </div>
             <div id='ingredients'>
               <h3>Ingredients</h3>
-              {this.state.ingredients && this.state.ingredients.length !== 0 && <ul>{this.state.ingredients.map(ingredient=> <li key={ingredient.name}>{ingredient.amount} - {ingredient.name}</li>)}</ul>}
+              {this.state.ingredients && this.state.ingredients.length !== 0 && <ul>{this.state.ingredients.map(ingredient=> <li key={ingredient}>{ingredient}</li>)}</ul>}
               <div className="AddRecipeForm__ingredient_amount">
                   <label htmlFor='AddRecipeForm__ingedients' >
                     Amount: 

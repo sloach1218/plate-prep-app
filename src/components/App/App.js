@@ -15,23 +15,24 @@ import WeekPlanner from '../../routes/WeekPlanner/WeekPlanner';
 class App extends React.Component  {
   state= {
     recipes: [],
-    ingredients: [],
     weekPlan: [],
   }
   componentDidMount(){
     this.setState({
-      recipes: dummyStore.recipes,
-      ingredients: dummyStore.ingredients,
       weekPlan: dummyStore.weekPlan,
     })
     
   }
 
+  updateRecipes = recipes => {
+    this.setState({ recipes: recipes })
+  }
+
   render(){
     const contextValue = {
       recipes: this.state.recipes,
-      ingredients: this.state.ingredients,
       weekPlan: this.state.weekPlan,
+      updateRecipes: this.updateRecipes,
     }
     
 

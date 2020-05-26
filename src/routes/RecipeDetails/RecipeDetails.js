@@ -3,27 +3,45 @@ import './RecipeDetails.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import RecipesContext from '../../Context';
-import {getRecipe, getIngredients} from '../../appHelpers';
+import {getRecipe} from '../../appHelpers';
+import RecipeApiService from '../../services/recipe-api-service';
 
 
 class RecipeDetails extends React.Component {
   static contextType = RecipesContext
 
-
+  renderIngredients(recipe) {
+    if(recipe.ingredients){
+      return recipe.ingredients.map((ingredient, index) => <li key={index}>{ingredient}</li>)
+      
+    }
+  }
   renderDirections(recipe) {
       if(recipe.directions){
         return recipe.directions.map((step, index) => <li key={index}>{step}</li>)
         
       }
   }
+  deleteRecipe(id) {
+    const recipeId ={
+      id: id
+    }
+    RecipeApiService.deleteRecipe(recipeId)
+      .then(() => {
+        window.location.href = '/home'
+
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
 
 
   render() {
     
     const { recipes = [] } = this.context;
-    const recipe = getRecipe(recipes, this.props.match.params.recipeId) || {};
-    const { ingredients = [] } = this.context;
-    const recipeIngredients = getIngredients(ingredients, this.props.match.params.recipeId) || {};
+    const recipeId = this.props.match.params.recipeId
+    const recipe = getRecipe(recipes, recipeId) || {};
     
 
     return (
@@ -34,9 +52,16 @@ class RecipeDetails extends React.Component {
               
               <h2>{recipe.name}</h2>
               <h3>Ingredients</h3>
-              <ul>{recipeIngredients.map(ingredient => <li key={ingredient.name}>{ingredient.amount} - {ingredient.name}</li>)}</ul>
+              <ul>{this.renderIngredients(recipe)}</ul>
               <h3>Directions</h3>
               <ol>{this.renderDirections(recipe)}</ol>
+              <button
+                  className='RecipeDeleteBtn'
+                  onClick={() =>
+                    this.deleteRecipe(recipeId)
+                  }
+                  >Delete Recipe
+              </button>
               
               
           </main>
