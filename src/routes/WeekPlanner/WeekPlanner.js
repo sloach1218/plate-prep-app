@@ -5,6 +5,8 @@ import Nav from '../../components/Nav/Nav';
 import RecipesContext from '../../Context';
 import {getWeek, getMeals} from '../../appHelpers';
 import AddMeal from '../../components/AddMeal/AddMeal';
+import PlannerApiService from '../../services/planner-api-service';
+
 
 
 class HomePage extends React.Component {
@@ -30,7 +32,14 @@ class HomePage extends React.Component {
     if (date === null){
       date = new Date()
       this.setState({date: date})
-   }
+    }
+
+    PlannerApiService.getMeals()
+      .then((meals) => {
+        this.context.updateWeekPlan(meals)
+      }).catch((err) => {
+        console.error(err)
+      })
   }
   renderWeek(){
     let date = this.state.date
@@ -60,14 +69,37 @@ class HomePage extends React.Component {
 
     const meals = getMeals(weekPlan, date) || {};
 
-    if (meals.recipes === undefined){return}
+    if (meals.breakfast === undefined){return}
    
-    return meals.recipes.map(recipe =>
-      <li key={recipe}>
-        {recipe}
-      </li>
+    return (
+      <div>
+        <h3>Breakfast</h3>
+        {meals.breakfast.map(recipe =>
+          <li key={recipe}>
+            {recipe}
+          </li>)}
+      
+        <h3>Lunch</h3>
+        {meals.lunch.map(recipe =>
+          <li key={recipe}>
+            {recipe}
+          </li>)}
+        <h3>Dinner</h3>
+        {meals.dinner.map(recipe =>
+          <li key={recipe}>
+            {recipe}
+          </li>)}
+        <h3>Snack</h3>
+        {meals.snack.map(recipe =>
+          <li key={recipe}>
+            {recipe}
+          </li>)}
+      </div>
+
+    
     )
   }
+  
   showModal = () => {
     this.setState({
       show: !this.state.show

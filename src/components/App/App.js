@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import dummyStore from '../../dummyStore'
 import Context from '../../Context';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
@@ -18,14 +17,15 @@ class App extends React.Component  {
     weekPlan: [],
   }
   componentDidMount(){
-    this.setState({
-      weekPlan: dummyStore.weekPlan,
-    })
+    
     
   }
 
   updateRecipes = recipes => {
     this.setState({ recipes: recipes })
+  }
+  updateWeekPlan = weekPlan => {
+    this.setState({ weekPlan: weekPlan })
   }
 
   render(){
@@ -33,6 +33,7 @@ class App extends React.Component  {
       recipes: this.state.recipes,
       weekPlan: this.state.weekPlan,
       updateRecipes: this.updateRecipes,
+      updateWeekPlan: this.updateWeekPlan,
     }
     
 

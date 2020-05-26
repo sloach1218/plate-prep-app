@@ -51,6 +51,5 @@ export const getWeek = (date) => {
 
 export const getMeals = (recipes, date) => {
     const meals = recipes.find(recipe => recipe.date === date)
-    
     return meals
 }
