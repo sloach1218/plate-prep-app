@@ -1,18 +1,23 @@
 import React from 'react';
-import './AddRecipe.css';
+import './EditRecipe.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import ValidationError from '../../ValidationError';
 import RecipeApiService from '../../services/recipe-api-service';
+import RecipesContext from '../../Context';
 
 
 
-class AddRecipe extends React.Component {
+
+class EditRecipe extends React.Component {
+  static contextType = RecipesContext
+
   constructor(props){
     super(props);
+    const recipe = this.props.location.state;
     this.state = {
       name:{
-        value: "",
+        value: recipe.name,
         touched: false
       },
       ingredientamount:{
@@ -27,10 +32,12 @@ class AddRecipe extends React.Component {
         value: "",
         touched:false
       },
-      directions:[],
-      ingredients:[],
+      directions:recipe.directions,
+      ingredients:recipe.ingredients,
+      id: recipe.id,
     };
   }
+  
   updateName(name) {
     this.setState({name: { value: name, touched:true }});
   }
@@ -60,16 +67,30 @@ class AddRecipe extends React.Component {
     const { name } = ev.target
     const ingredients = this.state.ingredients
     const directions = this.state.directions
-    
-    RecipeApiService.postRecipe({
+    const id = this.state.id
+
+    const recipe ={
       name: name.value,
       ingredients: ingredients,
-      directions: directions
+      directions: directions,
+      id: id
+    }
+    
+    RecipeApiService.updateRecipe({
+      name: name.value,
+      ingredients: ingredients,
+      directions: directions,
+      id: id
     })
-      .then(recipe => {
+    .then( RecipeApiService.getRecipes()
+    .then(() => {
+      this.context.updateRecipe(recipe)
+    }))
+      .then(() => {
         name.value = ''
-        window.location.href = '/home'
-      })
+        this.props.history.push(`/recipe/${id}`)}
+        
+      )
       .catch(res => {
         this.setState({ error: res.error })
       })
@@ -80,6 +101,7 @@ class AddRecipe extends React.Component {
     const amount = this.state.ingredientamount.value;
     const name = this.state.ingredientname.value;
     const newIngredient = amount + ' - ' + name
+    console.log(newIngredient)
     if(name === ''){
 
     } else{this.setState(state => {
@@ -108,8 +130,26 @@ class AddRecipe extends React.Component {
     }
 
   }
+  deleteIngredient(ingredient){
+    const ingredientToDelete = ingredient
+    const currentIngredients = this.state.ingredients
+
+    const newIngredients = currentIngredients.filter(ingredient => ingredient !== ingredientToDelete)
+    this.setState({ingredients: newIngredients})
+
+  }
+
+  deleteStep(step){
+    const stepToDelete = step
+    const currentSteps = this.state.directions
+
+    const newSteps = currentSteps.filter(step => step !== stepToDelete)
+    this.setState({directions: newSteps})
+
+  }
 
   render(){
+   
     return (
       <div  className="addRecipePage">
         <Header />
@@ -127,12 +167,13 @@ class AddRecipe extends React.Component {
                 id='AddRecipeForm__name'
                 onChange={e => this.updateName(e.target.value)}
                 aria-label="Name" 
-                aria-required="true" />
+                aria-required="true"
+                value={this.state.name.value} />
               {this.state.name.touched && (<ValidationError message={this.validateName()} />)}
             </div>
             <div id='ingredients'>
               <h3>Ingredients</h3>
-              {this.state.ingredients && this.state.ingredients.length !== 0 && <ul>{this.state.ingredients.map(ingredient=> <li key={ingredient}>{ingredient}</li>)}</ul>}
+              {this.state.ingredients && this.state.ingredients.length !== 0 && <ul>{this.state.ingredients.map(ingredient=> <li key={ingredient}>{ingredient} <div onClick={this.deleteIngredient.bind(this, ingredient)}>delete</div></li>)}</ul>}
               <div className="AddRecipeForm__ingredient_amount">
                   <label htmlFor='AddRecipeForm__ingedients' >
                     Amount: 
@@ -162,7 +203,7 @@ class AddRecipe extends React.Component {
             <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>Add Ingredient +</div>
             <div id='directions'>
               <h3>Directions</h3>
-              {this.state.directions && this.state.directions.length !== 0 && <ol>{this.state.directions.map(step=> <li key={step}>{step}</li>)}</ol>}
+              {this.state.directions && this.state.directions.length !== 0 && <ol>{this.state.directions.map(step=> <li key={step}>{step} <div onClick={this.deleteStep.bind(this, step)}>delete</div></li>)}</ol>}
               <label htmlFor='AddRecipeForm__step'>
                 Step: 
               </label>
@@ -175,7 +216,7 @@ class AddRecipe extends React.Component {
                 aria-label="ingredient" />
             </div>
             <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}>Add Step +</div>
-            <button type='submit'>Add Recipe</button>
+            <button type='submit'>Update Recipe</button>
   
         </form>
       </div>
@@ -183,4 +224,4 @@ class AddRecipe extends React.Component {
   }
 }
 
-export default AddRecipe;
+export default EditRecipe;

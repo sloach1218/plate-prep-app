@@ -4,12 +4,11 @@ import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import RecipesContext from '../../Context';
 import {getWeek, getMeals} from '../../appHelpers';
-import AddMeal from '../../components/AddMeal/AddMeal';
-import PlannerApiService from '../../services/planner-api-service';
+import { Link } from 'react-router-dom';
 
 
 
-class HomePage extends React.Component {
+class WeekPlanner extends React.Component {
   static contextType = RecipesContext
   constructor(props){
     super(props);
@@ -24,6 +23,8 @@ class HomePage extends React.Component {
       },
       show: false,
       date:null,
+      addMealDate:'',
+      meals: [],
       
   }}
   
@@ -34,12 +35,7 @@ class HomePage extends React.Component {
       this.setState({date: date})
     }
 
-    PlannerApiService.getMeals()
-      .then((meals) => {
-        this.context.updateWeekPlan(meals)
-      }).catch((err) => {
-        console.error(err)
-      })
+    
   }
   renderWeek(){
     let date = this.state.date
@@ -55,7 +51,16 @@ class HomePage extends React.Component {
         {week.map(day =>
           <div key={day} className="dayCont">
             <h2>{day}</h2>
-            <button onClick={e => this.showModal()}>Add Meal +</button>
+            <Link 
+                  to={{
+                    pathname:`/add-meal`,
+                    state: {
+                      date: day,
+                    }
+                  }}
+                  className='editBtn'
+                  > Add Meal +</Link>
+            {/*<button onClick={e => this.showModal(day)}>Add Meal +</button>*/}
             <ul>{this.renderMeals(day)}</ul>
           </div>
       )}
@@ -68,7 +73,7 @@ class HomePage extends React.Component {
     
 
     const meals = getMeals(weekPlan, date) || {};
-
+    
     if (meals.breakfast === undefined){return}
    
     return (
@@ -100,9 +105,10 @@ class HomePage extends React.Component {
     )
   }
   
-  showModal = () => {
+  showModal = (day) => {
     this.setState({
-      show: !this.state.show
+      show: !this.state.show,
+      addMealDate: day
     });
   };
   
@@ -131,10 +137,9 @@ class HomePage extends React.Component {
         <div className="weekPlannerContainer">
           {this.state.date && this.renderWeek()}
         </div>
-        <AddMeal onClose={this.showModal} show={this.state.show} />
       </div>
     );
   }
 }
 
-export default HomePage;
+export default WeekPlanner;

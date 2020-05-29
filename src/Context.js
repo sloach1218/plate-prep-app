@@ -6,5 +6,6 @@ const RecipesContext = React.createContext({
   weekPlan: [],
   updateRecipes: () => {},
   updateWeekPlan: () => {},
+  updateRecipe: () => {},
 })
 export default RecipesContext

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './RecipeDetails.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
@@ -55,6 +56,18 @@ class RecipeDetails extends React.Component {
               <ul>{this.renderIngredients(recipe)}</ul>
               <h3>Directions</h3>
               <ol>{this.renderDirections(recipe)}</ol>
+              <Link 
+                  to={{
+                    pathname:`/edit-recipe/${recipe.id}`,
+                    state: {
+                      name: recipe.name,
+                      ingredients: recipe.ingredients,
+                      directions: recipe.directions,
+                      id: recipe.id
+                    }
+                  }}
+                  className='editBtn'
+                  > Edit Details</Link>
               <button
                   className='RecipeDeleteBtn'
                   onClick={() =>
