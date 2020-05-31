@@ -77,7 +77,7 @@ class EditRecipe extends React.Component {
 
     if(checkForDuplicate && checkName !== this.props.location.state.name.trim().toLowerCase()){return}
 
-    
+
     const { name } = ev.target
     const ingredients = this.state.ingredients
     const directions = this.state.directions
@@ -115,7 +115,6 @@ class EditRecipe extends React.Component {
     const amount = this.state.ingredientamount.value;
     const name = this.state.ingredientname.value;
     const newIngredient = amount + ' - ' + name
-    console.log(newIngredient)
     if(name === ''){
 
     } else{this.setState(state => {
