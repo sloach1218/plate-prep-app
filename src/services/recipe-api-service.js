@@ -1,4 +1,6 @@
 import config from '../config'
+import TokenService from '../services/token-service'
+
 
 const RecipeApiService = {
   getRecipes(){
@@ -6,6 +8,8 @@ const RecipeApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       }
     }).then(response => response.json())
   },
@@ -16,6 +20,8 @@ const RecipeApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       },
       body: JSON.stringify(recipe),
     })
@@ -30,6 +36,8 @@ const RecipeApiService = {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       },
       body: JSON.stringify(recipe),
     })
@@ -43,6 +51,8 @@ const RecipeApiService = {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       },
       body: JSON.stringify(id),
     })

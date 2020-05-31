@@ -1,4 +1,6 @@
 import config from '../config'
+import TokenService from '../services/token-service'
+
 
 const PlannerApiService = {
   getMeals(){
@@ -6,6 +8,8 @@ const PlannerApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       }
     }).then(response => response.json())
   },
@@ -14,6 +18,8 @@ const PlannerApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`,
+
       },
       body: JSON.stringify(meal),
     })

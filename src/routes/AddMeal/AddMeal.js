@@ -6,6 +6,8 @@ import RecipeApiService from '../../services/recipe-api-service';
 import {getMeals} from '../../appHelpers';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
+import ValidationError from '../../ValidationError';
+
 
 
 
@@ -116,6 +118,16 @@ class AddMeal extends React.Component {
     
   }
 
+  validateRecipeDoesNotExist(){
+    const name = this.state.newRecipe.name.trim().toLowerCase();
+    const { recipes = [] } = this.context;
+    const recipe = recipes.find(recipe => recipe.name.toLowerCase() === name)
+
+    if (recipe){
+      return "Recipe name already exists"
+    }
+  }
+
 
   deleteMeal(recipeToDelete, time){
     
@@ -143,7 +155,14 @@ class AddMeal extends React.Component {
       
   handleRecipeSubmit = ev => {
     ev.preventDefault()
-    
+
+    const name = this.state.newRecipe.name.trim().toLowerCase();
+    const { recipes = [] } = this.context;
+    const checkForDuplicate = recipes.find(recipe => recipe.name.toLowerCase() === name)
+
+    if(checkForDuplicate){return}
+
+
 
     const mealTime = this.state.mealTime.value
     const recipe = this.state.recipe.value
@@ -284,7 +303,7 @@ class AddMeal extends React.Component {
             <p>OR</p>
             <div className='name'>
               <label htmlFor='AddRecipeForm__name'>
-                2. Add a New Recipe Name: 
+                Add a New Recipe Name: 
               </label>
               <input
                 name='name'
@@ -293,7 +312,8 @@ class AddMeal extends React.Component {
                 onChange={e => this.updateNewRecipeName(e.target.value)}
                 aria-label="Name" 
                 value={this.state.newRecipe.name} />
-              <button type='submit'>Add</button>
+                {this.state.newRecipe.touched && (<ValidationError message={this.validateRecipeDoesNotExist()} />)}
+              <button type='submit'>Add Recipe to Plan</button>
             </div>
             </form>
         <form className='mealPlanForm' onSubmit={e => this.handleMealPlanSubmit(e)}>

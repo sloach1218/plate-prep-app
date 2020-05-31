@@ -4,21 +4,43 @@
     margin: 60px 0 0 0;
     padding: 40px 40px 0 40px;
   }
-.addRecipeToMealPlanForm input, .mealPlanForm input  {
+.addRecipeToMealPlanForm input  {
     width: 100%;
     border: 1px solid grey;
     padding: 6px;
     margin-bottom: 5px;
+    display: block;
+}
+.addRecipeToMealPlanForm p{
+    
+    margin: 6px;
 }
 .mealPlanForm {
     display: inline-block;
     text-align: left;
-    margin: 0 0 60px 0;
+    margin: 30px 0 60px 0;
     padding: 0 40px 40px 40px;
 }
-.mealPlanForm button{
-    border:none;
+
+.mealPlanForm button, .addRecipeToMealPlanForm button{
+    border:1px solid;
     padding: 8px;
     width: 100%;
     background-color: whitesmoke;
+    margin-top: 10px;
+}
+form.mealPlanForm div li{padding: 4px 0;}
+form.mealPlanForm div li div{
+    float: right;
+    padding: 2px 4px;
+    text-align: center;
+    cursor: pointer;
+    color: grey;
+    border: 1px solid grey;
+    margin-left: 10px;
+    font-size: 12px;
+}
+form.mealPlanForm div li div:hover{
+    background-color: whitesmoke;
+    color:black;
 }

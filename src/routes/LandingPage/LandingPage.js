@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './LandingPage.css';
 import ValidationError from '../../ValidationError';
+import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/auth-api-service';
 
 
 
@@ -44,7 +46,22 @@ class LandingPage extends React.Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    console.log('submittetd!')
+    this.setState({ error:null })
+    const { username, password } = ev.target
+
+    AuthApiService.postLogin({
+      user_name: username.value,
+      password: password.value,
+    })
+      .then(res => {
+        username.value = ''
+        password.value = ''
+        TokenService.saveAuthToken(res.authToken)
+        window.location.href = '/home'
+      })
+      .catch(res => {
+        this.setState({ error:res.error})
+      })
   }
 
 

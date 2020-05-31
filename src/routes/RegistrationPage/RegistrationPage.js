@@ -1,6 +1,8 @@
 import React from 'react';
 import './RegistrationPage.css';
 import ValidationError from '../../ValidationError';
+import AuthApiService from '../../services/auth-api-service'
+
 
 
 class RegistrationPage extends React.Component {
@@ -62,7 +64,23 @@ class RegistrationPage extends React.Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    console.log('submitted!')
+    const { username, password } = ev.target
+
+    this.setState({ error: null })
+    AuthApiService.postUser({
+      user_name: username.value,
+      password: password.value,
+    })
+      .then(user => {
+        username.value = ''
+        password.value = ''
+        const { history } = this.props
+        history.push('/')
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+        console.log(this.state.error)
+      })
   }
 
   render(){

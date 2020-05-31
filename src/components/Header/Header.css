@@ -3,6 +3,7 @@ header{
   padding: 10px;
   position: fixed;
   background-color: whitesmoke;
+  top: 0;
 }
 header h1{
   text-align: center;

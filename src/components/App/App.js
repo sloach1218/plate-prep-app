@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import './App.css';
 import Context from '../../Context';
 import LandingPage from '../../routes/LandingPage/LandingPage';
@@ -12,6 +12,8 @@ import WeekPlanner from '../../routes/WeekPlanner/WeekPlanner';
 import AddMeal from '../../routes/AddMeal/AddMeal';
 import RecipeApiService from '../../services/recipe-api-service';
 import PlannerApiService from '../../services/planner-api-service';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 
 
 
@@ -71,36 +73,36 @@ class App extends React.Component  {
       <div className='App'>
         <Context.Provider value={contextValue}>
         <Switch>
-            <Route
+            <PublicOnlyRoute
                     exact
                     path={'/'}
                     component={LandingPage}
                   />
-            <Route
+            <PublicOnlyRoute
                     path={'/register'}
                     component={RegistrationPage}
                   />
-            <Route
+            <PrivateRoute
                     path={'/home'}
                     component={HomePage}
                   />
-            <Route
+            <PrivateRoute
                     path={'/recipe/:recipeId'}
                     component={RecipeDetails}
                   />
-            <Route
+            <PrivateRoute
                     path={'/add-recipe'}
                     component={AddRecipe}
                   />
-            <Route
+            <PrivateRoute
                     path={'/edit-recipe/:recipeId'}
                     component={EditRecipe}
                   />
-            <Route
+            <PrivateRoute
                     path={'/meal-planner'}
                     component={WeekPlanner}
                   />
-            <Route
+            <PrivateRoute
                     path={'/add-meal'}
                     component={AddMeal}
                   />

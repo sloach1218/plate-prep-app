@@ -4,3 +4,7 @@
     background-color: whitesmoke;
     margin: 5px 10px;
 }
+.RecipeListItem:hover{
+    background-color: #eee;
+}
+

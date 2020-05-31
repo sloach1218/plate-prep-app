@@ -52,17 +52,30 @@ class EditRecipe extends React.Component {
   }
 
   validateName(){
-    const name = this.state.name.value.trim();
+    const name = this.state.name.value.trim().toLowerCase();;
     if (name.length === 0){
       return "Name is required"
     } else if(name.length < 2){
       return "Name must be at least 2 characters long"
+    }
+
+    const { recipes = [] } = this.context;
+    const recipe = recipes.find(recipe => recipe.name.toLowerCase() === name)
+
+    if (recipe){
+      return "Recipe name already exists"
     }
   }
   
 
   handleSubmit = ev => {
     ev.preventDefault()
+
+    const checkName = this.state.name.value.trim().toLowerCase();
+    const { recipes = [] } = this.context;
+    const checkForDuplicate = recipes.find(recipe => recipe.name.toLowerCase() === checkName)
+    console.log(this.props.location.state.name)
+    if(checkForDuplicate && checkName !== this.props.location.state.name){return}
 
     const { name } = ev.target
     const ingredients = this.state.ingredients
