@@ -46,7 +46,7 @@ const RecipeApiService = {
           return res.json().then(error => Promise.reject(error))
       })
   },
-  deleteRecipe(id){
+  deleteRecipe(recipe){
     return fetch(`${config.API_RECIPES_ENDPOINT}`, {
       method: 'DELETE',
       headers: {
@@ -54,7 +54,7 @@ const RecipeApiService = {
         'authorization':`bearer ${TokenService.getAuthToken()}`,
 
       },
-      body: JSON.stringify(id),
+      body: JSON.stringify(recipe),
     })
     .then(res => {
       if (!res.ok){

@@ -23,9 +23,10 @@ class RecipeDetails extends React.Component {
         
       }
   }
-  deleteRecipe(id) {
+  deleteRecipe(id,name) {
     const recipeId ={
-      id: id
+      id: id,
+      name: name
     }
     RecipeApiService.deleteRecipe(recipeId)
       .then(() => {
@@ -71,7 +72,7 @@ class RecipeDetails extends React.Component {
               <button
                   className='RecipeDeleteBtn'
                   onClick={() =>
-                    this.deleteRecipe(recipeId)
+                    this.deleteRecipe(recipeId, recipe.name)
                   }
                   >Delete Recipe
               </button>
