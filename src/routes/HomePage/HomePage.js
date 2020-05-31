@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './HomePage.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
@@ -15,13 +16,16 @@ class HomePage extends React.Component {
 
   renderRecipes() {
     const { recipes = [] } = this.context;
-    
+    if(recipes.length === 0){
+      return(<Link to={{pathname:`/add-recipe`}} className="AddRecipeCTA">Add Your First Recipe Here!</Link>)
+      
+    } else {
       return recipes.map(recipe =>
         <RecipeListItem
           key={recipe.id}
           recipe={recipe}
         />
-      )
+      )}
     
     
   }

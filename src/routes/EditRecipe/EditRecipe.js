@@ -73,10 +73,11 @@ class EditRecipe extends React.Component {
 
     const checkName = this.state.name.value.trim().toLowerCase();
     const { recipes = [] } = this.context;
-    const checkForDuplicate = recipes.find(recipe => recipe.name.toLowerCase() === checkName)
-    console.log(this.props.location.state.name)
-    if(checkForDuplicate && checkName !== this.props.location.state.name){return}
+    const checkForDuplicate = recipes.find(recipe => recipe.name.trim().toLowerCase() === checkName)
 
+    if(checkForDuplicate && checkName !== this.props.location.state.name.trim().toLowerCase()){return}
+
+    
     const { name } = ev.target
     const ingredients = this.state.ingredients
     const directions = this.state.directions

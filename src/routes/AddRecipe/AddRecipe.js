@@ -74,7 +74,7 @@ class AddRecipe extends React.Component {
     
     const checkName = this.state.name.value.trim().toLowerCase();
     const { recipes = [] } = this.context;
-    const checkForDuplicate = recipes.find(recipe => recipe.name.toLowerCase() === checkName)
+    const checkForDuplicate = recipes.find(recipe => recipe.name.trim().toLowerCase() === checkName)
     if(checkForDuplicate){return}
 
     
