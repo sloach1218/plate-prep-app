@@ -110,7 +110,6 @@ class AddMeal extends React.Component {
   updateRecipe(recipe) {
     this.setState({recipe: { value: recipe, touched:true }});
     this.setState({newRecipe: { name: "", touched:false }});
-    console.log(this.state.newRecipe.name, this.state.recipe.value)
   }
   updateNewRecipeName(name) {
     this.setState({newRecipe: { name: name, touched:true }});
