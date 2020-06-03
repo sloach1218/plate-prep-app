@@ -77,6 +77,16 @@ class AddRecipe extends React.Component {
     const checkForDuplicate = recipes.find(recipe => recipe.name.trim().toLowerCase() === checkName)
     if(checkForDuplicate){return}
 
+    const addLastIngredient = this.state.ingredientamount.value + ' - ' + this.state.ingredientname.value
+    const addLastStep = this.state.step.value
+
+    if (this.state.ingredientamount.value !== '' || this.state.ingredientname.value !== ''){
+      ingredients.push(addLastIngredient)
+    }
+    if (this.state.step.value !== ''){
+      directions.push(addLastStep)
+    }
+
     
     RecipeApiService.postRecipe({
       name: name.value,
@@ -132,7 +142,7 @@ class AddRecipe extends React.Component {
         <Header />
         <Nav />
         <form className='AddRecipeForm' onSubmit={e => this.handleSubmit(e)}>
-            <legend>Add a new recipe</legend>
+            <legend>Add New Recipe</legend>
             <div className='name'>
               <label htmlFor='AddRecipeForm__name'>
                 Name: 

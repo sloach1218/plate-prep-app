@@ -1,35 +1,78 @@
+
 .addRecipeToMealPlanForm{
     display: inline-block;
     text-align: left;
-    margin: 60px 0 0 0;
-    padding: 40px 40px 0 40px;
+    margin: 100px 0 0 0;
+    width: 80%;
+    max-width:400px;
   }
-.addRecipeToMealPlanForm input  {
+.addRecipeToMealPlanForm .name{
+    margin-left: 20px;
     width: 100%;
+}
+.addRecipeToMealPlanForm legend, .mealPlanForm legend {
+    font-size: 20px;
+    font-weight: 600;
+    padding:0;
+}
+.addRecipeToMealPlanForm input  {
+    width: 94%;
     border: 1px solid grey;
     padding: 6px;
     margin-bottom: 5px;
     display: block;
 }
 .addRecipeToMealPlanForm p{
-    
-    margin: 6px;
+    margin: 6px 18px;
+}
+.addRecipeToMealPlanForm .mealTimeSelect{
+    display: block;
+    width: 94%;
+    margin:0 0 10px 18px;
+    padding: 4px;
+    cursor: pointer;
+    font-family: 'Quicksand';
+    font-size: 14px;
+}
+.addRecipeToMealPlanForm button{
+    border: 1px solid #970014;
+    padding: 7px;
+    text-align: center;
+    cursor: pointer;
+    color: #970014;
+    width: 94%;
+}
+.addRecipeToMealPlanForm button:hover{
+    background-color: whitesmoke;
 }
 .mealPlanForm {
     display: inline-block;
     text-align: left;
-    margin: 30px 0 60px 0;
-    padding: 0 40px 40px 40px;
+    margin: 20px 0 110px 0;
+    width: 80%;
+    max-width:400px;
+}
+.mealPlanForm p {
+    margin:10px 0 0 20px;
+    font-weight: 600;
 }
 
-.mealPlanForm button, .addRecipeToMealPlanForm button{
-    border:1px solid;
-    padding: 8px;
+.mealPlanForm button {
+    border:1px solid #970014;
+    padding: 10px 0;
     width: 100%;
-    background-color: whitesmoke;
-    margin-top: 10px;
+    background-color: #970014;
+    margin-top:10px;
+    font-size: 16px;
+    color:#fff;
 }
-form.mealPlanForm div li{padding: 4px 0;}
+.mealPlanForm button:hover {
+    background-color: #66000e;
+}
+form.mealPlanForm div li{
+    padding: 4px 0;
+    margin-left: 40px;
+}
 form.mealPlanForm div li div{
     float: right;
     padding: 2px 4px;
@@ -44,3 +87,14 @@ form.mealPlanForm div li div:hover{
     background-color: whitesmoke;
     color:black;
 }
+
+
+@media only screen and (min-width: 800px) {
+    .mealPlanForm, .addRecipeToMealPlanForm{
+        width:46%;
+        margin: 100px 2% 0 2%;
+        display: inline-grid;
+    }
+    
+    
+  }

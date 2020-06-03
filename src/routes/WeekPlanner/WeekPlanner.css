@@ -1,27 +1,49 @@
 .weekPlannerContainer{
-  
   padding: 80px 0;
   
-
 }
 .weekPlannerContainer .weekControls{
   width: 100%;
   overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.weekPlannerContainer .weekControls button{
+  border: 1px solid #970014;
+  padding: 6px 8px;
+  font-family: 'Quicksand';
+  font-weight: 600;
+  color: #970014;
+}
+.weekPlannerContainer .weekControls button:hover{
+  background-color: white;
 }
 .weekPlannerContainer .dayCont{
   text-align: left;
+  margin-bottom: 3px;
 }
 .weekPlannerContainer h2{
-  display: inline-block;
+  display: block;
   margin:0;
   padding:10px;
+  color: #970014;
 }
-.weekPlannerContainer .dayCont button{
-  float: right;
-  margin: 15px;
+
+.weekPlannerContainer .dayCont .addMealBtn{
+  position: absolute;
+  right:15px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #444;
+  padding: 5px 0;
+}
+.weekPlannerContainer h3{
+  margin:8px 0 0 0;
+  font-weight: 600;
 }
 .weekPlannerContainer ul{
-  padding: 10px;
+  padding: 0 20px 15px 20px;
   margin:0;
 }
 .weekPlannerContainer li{

@@ -4,20 +4,30 @@
 .addRecipePage form{
     display: inline-block;
     text-align: left;
-    margin: 120px 30px 40px 30px;
+    margin: 90px 30px 120px 30px;
   }
+.addRecipePage legend {
+    font-size: 20px;
+    font-weight: 600;
+}
 .addRecipePage input {
     width: 100%;
     border: 1px solid grey;
-    padding: 6px;
+    padding: 10px;
     margin-bottom: 5px;
 }
 .addRecipePage button{
-    border:none;
-    padding: 8px;
+    border:1px solid #970014;
+    padding: 14px 0;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: #970014;
+    margin-top:20px;
+    font-size: 16px;
+    color:#fff;
+
 }
+.addRecipePage button:hover{
+    background-color: #66000e;}
 .AddRecipeForm__ingredient_amount{
     width: 32%;
     display:inline-block;
@@ -29,4 +39,16 @@
 }
 .addRecipePage h3{
     margin-bottom:0;
+    font-weight: 500;
+}
+#addstepBtn, #addDirectionsBtn{
+    border: 1px solid #970014;
+    padding: 7px;
+    text-align: center;
+    cursor: pointer;
+    color: #970014;
+}
+
+#addstepBtn:hover, #addDirectionsBtn:hover{
+    background-color: whitesmoke;
 }

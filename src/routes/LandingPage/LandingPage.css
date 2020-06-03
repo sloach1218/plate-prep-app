@@ -1,25 +1,38 @@
 .landingPageMain {
   text-align: center;
 }
-.landingPageMain header{
-  padding: 30px;
-  position: relative;
-  
+.landingPageMain .appDescrip h1{
+  font-size:30px;
+  font-weight: 500;
+  margin:0;
+  color: #970014;
 }
-.landingPageMain header h1{
-  font-size: 30px;
-  float:none;
-  margin-left: 0;
-  
+.landingPageMain .appDescrip p{
+  font-size:18px;
+  font-weight: 500;
+  margin-top:10px;
 }
-.landingPageMain .appDescrip h3{
-  font-size:22px;
+.landingPageMain .appDescrip .whyThisAppRocks{
+  display:flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-top:30px;
+  color: #970014;
+  font-weight: 600;
+  padding-left: 0;
 }
-section {
-  padding: 30px;
+.landingPageMain .appDescrip .whyThisAppRocks li{
+  margin:0 20px;
+}
+.landingPageMain .appDescrip .whyThisAppRocks .icon{
+  font-size:24px;
+  margin-bottom: 10px;
 }
 section:first-of-type {
-  background-color: whitesmoke;
+  padding: 50px;
+}
+section {
+  padding: 10px;
 }
 .landingPageMain form{
   display: inline-block;
@@ -34,21 +47,50 @@ section:first-of-type {
 }
 .landingPageMain form button{
   display: block;
-  background-color: black;
+  background-color: #970014;
   padding: 10px;
   margin: 6px auto;
   border:none;
+  color:white;
+  font-size: 18px;
+  font-family: 'Quicksand';
+  font-weight: 700;
   
+}
+.landingPageMain form button:hover{
+  background-color: #66000e;
 }
 
 .landingPageMain .registerBtn{
-  background-color: darkgrey;
-  padding: 10px 20px;
+  padding: 8px 16px;
   display: inline-block;
   margin-top: 20px;
   text-decoration: none;
-  color: black;
-  font-weight: 700;
+  color: #970014;
+  font-weight: 600;
+  border: 1px solid #970014;
+}
+
+.landingPageMain .registerBtn:hover{
+  color: white;
+  background-color: #970014;
+}
+.landingPageMain .registerBtn .icon{
+  margin-left:5px;
+}
+.login-form legend{
+  font-size:18px;
+  font-weight: 500;
+  color: #970014;
+}
+.demoUserCredentials p{
+  margin:0;
+}
+.demoUserCredentials p:first-of-type{
+  margin:10px;
+}
+.demoUserCredentials{
+  padding-bottom: 40px;
 }
 
 

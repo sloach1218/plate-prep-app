@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import TokenService from '../../services/token-service';
 
 
@@ -14,10 +14,10 @@ class Nav extends React.Component {
     return (
       <nav className='mainNav'>
           
-          <Link to={'/home'} className='HomeBtn'>My Recipes</Link>
-          <Link to={'/add-recipe'} className='AddRecipeBtn'>Add Recipe</Link>
-          <Link to={'/meal-planner'} className='mealPlannerBtn'>Week Planner</Link>
-          <Link to={'/'} onClick={this.handleLogout} className='LogoutBtn'>Logout</Link>
+          <NavLink to={'/home'} className='HomeBtn' activeClassName="selected">My<br></br>Recipes</NavLink>
+          <NavLink to={'/add-recipe'} className='AddRecipeBtn' activeClassName="selected">Add<br></br>Recipe</NavLink>
+          <NavLink to={'/meal-planner'} className='mealPlannerBtn' activeClassName="selected">Week<br></br>Planner</NavLink>
+          <Link to={'/'} onClick={this.handleLogout} className='LogoutBtn'>Sign<br></br>Out</Link>
       </nav>
     );
   }

@@ -10,10 +10,7 @@ import RecipesContext from '../../Context';
 
 class HomePage extends React.Component {
   static contextType = RecipesContext
-
- 
   
-
   renderRecipes() {
     const { recipes = [] } = this.context;
     if(recipes.length === 0){
@@ -26,8 +23,6 @@ class HomePage extends React.Component {
           recipe={recipe}
         />
       )}
-    
-    
   }
 
   render(){
@@ -39,7 +34,6 @@ class HomePage extends React.Component {
         <div className="recipeListContainer">
           {this.renderRecipes()}
         </div>
-        
       </div>
     );
   }

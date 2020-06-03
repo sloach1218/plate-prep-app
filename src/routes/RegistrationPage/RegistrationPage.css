@@ -6,20 +6,30 @@
     text-align: left;
     margin: 90px 20px;
   }
+.registrationPage form legend{
+    font-size: 20px;
+    font-weight: 600;
+    padding:0;
+}
 .registrationPage input {
     width: 100%;
     border: 1px solid grey;
-    padding: 6px;
+    padding: 10px;
     margin-bottom: 5px;
 }
 .registrationPage button{
     width: 100%;
-    border: none;
-    padding: 8px;
+    border:1px solid #970014;
+    padding: 10px;
     margin-bottom: 5px;
-    background-color: whitesmoke;
+    background-color: #970014;
+    font-size: 16px;
+    color:#fff;
+    margin-top:6px;
 }
+.registrationPage button:hover{
+    background-color: #66000e;}
 .registrationPage p{
     font-size:12px;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }

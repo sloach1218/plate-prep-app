@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './WeekPlanner.css';
 import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import RecipesContext from '../../Context';
 import {getWeek, getMeals} from '../../appHelpers';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -45,23 +47,24 @@ class WeekPlanner extends React.Component {
     return (
       <div>
         <div className="weekControls">
-          <button onClick={this.getPreviousWeek.bind(this)}>Last Week</button>
-          <button onClick={this.getNextWeek.bind(this)}>Next Week</button>
+          <button onClick={this.getPreviousWeek.bind(this)}><FontAwesomeIcon icon={faChevronLeft} className="icon"/> Last Week</button>
+          <button onClick={this.getNextWeek.bind(this)}>Next Week <FontAwesomeIcon icon={faChevronRight} className="icon"/></button>
         </div>
         {week.map(day =>
           <div key={day} className="dayCont">
-            <h2>{day}</h2>
-            <Link 
-                  to={{
-                    pathname:`/add-meal`,
-                    state: {
-                      date: day,
-                    }
-                  }}
-                  className='editBtn'
-                  > Add Meal +</Link>
+            <h2>{day}
+              <Link 
+                    to={{
+                      pathname:`/add-meal`,
+                      state: {
+                        date: day,
+                      }
+                    }}
+                    className='addMealBtn'
+                    > Add Meal +</Link>
+            </h2>
             {/*<button onClick={e => this.showModal(day)}>Add Meal +</button>*/}
-            <ul>{this.renderMeals(day)}</ul>
+            {this.renderMeals(day)}
           </div>
       )}
       </div>
@@ -77,29 +80,29 @@ class WeekPlanner extends React.Component {
     if (meals.breakfast === undefined){return}
    
     return (
-      <div>
-        <h3>Breakfast</h3>
+      <ul>
+        {meals.breakfast.length > 0 && <h3>Breakfast</h3>}
         {meals.breakfast.map(recipe =>
           <li key={recipe}>
             {recipe}
           </li>)}
       
-        <h3>Lunch</h3>
+        {meals.lunch.length > 0 && <h3>Lunch</h3>}
         {meals.lunch.map(recipe =>
           <li key={recipe}>
             {recipe}
           </li>)}
-        <h3>Dinner</h3>
+        {meals.dinner.length > 0 && <h3>Dinner</h3>}
         {meals.dinner.map(recipe =>
           <li key={recipe}>
             {recipe}
           </li>)}
-        <h3>Snack</h3>
+        {meals.snack.length > 0 && <h3>Snack</h3>}
         {meals.snack.map(recipe =>
           <li key={recipe}>
             {recipe}
           </li>)}
-      </div>
+      </ul>
 
     
     )

@@ -1,13 +1,13 @@
 nav.mainNav{
   width:100%;
   background-color: #970014;
-  padding: 20px 10px;
   display: flex;
   justify-content: space-around;
   position: fixed;
   z-index: 1;
   bottom: 0;
 }
+
 nav .navBtnCont{
   text-align: center;
 }
@@ -19,5 +19,12 @@ nav a{
   color: white;
   display: block;
   cursor: pointer;
+  padding: 16px 14px;
+  width: 25%;
 }
-
+nav a:hover{
+  background-color: #66000e;
+}
+.selected{
+  background-color: #66000e;
+}

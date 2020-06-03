@@ -93,7 +93,7 @@ class RegistrationPage extends React.Component {
         <form className='RegistrationForm'  onSubmit={e => this.handleSubmit(e)}>
             <div className='RegistrationForm__error' role='alert'>
             </div>
-            <legend>Create an Account</legend>
+            <legend>Create Account</legend>
             <div className='username'>
               <label htmlFor='RegistrationForm__username'>
                 Username: 
@@ -120,7 +120,7 @@ class RegistrationPage extends React.Component {
                 onChange={e => this.updatePassword(e.target.value)}
                 aria-label="password" 
                 aria-required="true" />
-              <p>Password must be at least 8 characters and contain one upper case, lower case, number and special character.</p>
+              <p>Password must be at least 8 characters and contain one upper case,<br></br>lower case, number and special character.</p>
               {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
             </div>
             <div className='reenterPassword'>

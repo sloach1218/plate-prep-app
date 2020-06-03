@@ -1,25 +1,9 @@
 .addRecipePage {
     text-align: center;
 }
-.addRecipePage form{
-    display: inline-block;
-    text-align: left;
-    margin: 90px 30px 80px 30px;
-  }
-.addRecipePage input {
-    width: 100%;
-    border: 1px solid grey;
-    padding: 6px;
-    margin-bottom: 5px;
-}
-.addRecipePage button{
-    border:none;
-    padding: 8px;
-    width: 100%;
-    background-color: whitesmoke;
-}
+
 .AddRecipeForm__ingredient_amount{
-    width: 32%;
+    width: 33%;
     display:inline-block;
 }
 .AddRecipeForm__ingredient_name{

@@ -1,10 +1,38 @@
 .RecipeListItem{
     padding:5px;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: #fff;
     margin: 5px 10px;
+    text-decoration: none;
+    color:#970014;
+    font-size: 20px;
+    position: relative;
+    text-align: left;
+    border: 1px solid #aaa;
 }
 .RecipeListItem:hover{
-    background-color: #eee;
+    box-shadow: 0 0 4px rgb(184, 176, 152);
+    color: #66000e;
+}
+.RecipeListItem p{
+    padding: 14px;
+    margin: 0;
 }
 
+.RecipeListItem .icon{
+    font-size: 40px;
+    padding: 3px 2px 3px 4px;
+    color:#970014;
+    
+}
+.RecipeListItem:hover .icon{
+    color:#66000e;
+}
+.iconDiv{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 46px;
+    height: 46px;
+    text-align: center;
+}

@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-color: rgb(235, 231, 223);
+  min-height: 100vh;
+}
+label{
+  font-weight: 500;
 }
 button{
   cursor: pointer;
@@ -7,4 +12,5 @@ button{
 
 .error{
   color:red;
+  margin-bottom: 6px;
 }

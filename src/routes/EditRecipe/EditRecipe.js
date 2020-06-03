@@ -77,11 +77,20 @@ class EditRecipe extends React.Component {
 
     if(checkForDuplicate && checkName !== this.props.location.state.name.trim().toLowerCase()){return}
 
-
     const { name } = ev.target
     const ingredients = this.state.ingredients
     const directions = this.state.directions
     const id = this.state.id
+
+    const addLastIngredient = this.state.ingredientamount.value + ' - ' + this.state.ingredientname.value
+    const addLastStep = this.state.step.value
+
+    if (this.state.ingredientamount.value !== '' || this.state.ingredientname.value !== ''){
+      ingredients.push(addLastIngredient)
+    }
+    if (this.state.step.value !== ''){
+      directions.push(addLastStep)
+    }
 
     const recipe ={
       name: name.value,
@@ -168,7 +177,7 @@ class EditRecipe extends React.Component {
         <Header />
         <Nav />
         <form className='AddRecipeForm' onSubmit={e => this.handleSubmit(e)}>
-            <legend>Add a new recipe</legend>
+            <legend>Edit Recipe</legend>
             <div className='name'>
               <label htmlFor='AddRecipeForm__name'>
                 Name: 

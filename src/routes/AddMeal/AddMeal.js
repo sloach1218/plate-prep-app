@@ -244,7 +244,7 @@ class AddMeal extends React.Component {
     const dinner = this.state.dinner
     const snack = this.state.snack
 
-    
+
     PlannerApiService.postMeal({
       date: date,
       breakfast: breakfast,
@@ -252,12 +252,19 @@ class AddMeal extends React.Component {
       dinner:dinner,
       snack:snack,
     })
-      .then(
-        window.location.href = '/meal-planner'
-      )
       .catch(res => {
         this.setState({ error: res.error })
       })
+
+      PlannerApiService.getMeals()
+        .then((meals) => {
+          this.context.updateWeekPlan(meals)
+        }).then(() =>
+          window.location.href = '/meal-planner'
+        ).catch((err) => {
+          console.error(err)
+        })
+        
 
   }
   
@@ -274,13 +281,13 @@ class AddMeal extends React.Component {
         <Header />
         <Nav />
         <form className='addRecipeToMealPlanForm' onSubmit={e => this.handleRecipeSubmit(e)}>
-          <legend>Create Meal Plan for {this.state.date}</legend>
+          <legend>Create Your Meal Plan</legend>
             <div className='mealTime'>
               <label htmlFor='AddRecipeToMealPlanForm__mealTime'>
                 1. Choose a meal time: 
               </label>
               <select name='mealTime' value={this.state.mealTime.value} onChange={e => this.updateMealTime(e.target.value)} className="mealTimeSelect">
-                  <option value="Choose" key="Choose">Choose A Meal Time</option>
+                  <option value="Choose" key="Choose">Choose a Meal Time</option>
                   <option value="breakfast" key="breakfast">Breakfast</option>
                   <option value="lunch" key="lunch">Lunch</option>
                   <option value="dinner" key="dinner">Dinner</option>
@@ -316,7 +323,7 @@ class AddMeal extends React.Component {
             </div>
             </form>
         <form className='mealPlanForm' onSubmit={e => this.handleMealPlanSubmit(e)}>
-            <legend>Current Plan</legend>
+            <legend>Current Plan for {this.state.date}</legend>
               {this.renderCurrentPlan(weekPlan)}
             <button type='submit'>Save Meal Plan</button>
   

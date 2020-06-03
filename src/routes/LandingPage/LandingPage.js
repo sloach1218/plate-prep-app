@@ -4,6 +4,8 @@ import './LandingPage.css';
 import ValidationError from '../../ValidationError';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faList, faCalendarAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -69,15 +71,16 @@ class LandingPage extends React.Component {
     
     return (
       <main className="landingPageMain">
-        <header>
-          <h1>Plate Prep</h1>
-        </header>
         
         <section className="appDescrip">
-          
-          <h3>Tagline</h3>
-          <p>Description</p>
-          <Link to={`/register`} className='registerBtn'>Create an Account</Link>
+          <h1>Plate Prep</h1>
+          <p>Keep your recipes and weekly meal plan all together in one easy to use app!</p>
+          <ul className="whyThisAppRocks">
+            <li><FontAwesomeIcon icon={faList} className="icon"/><br></br>Save<br></br>Recipes</li>
+            <li><FontAwesomeIcon icon={faCalendarAlt} className="icon"/><br></br>Plan Your<br></br>Week</li>
+            <li><FontAwesomeIcon icon={faSyncAlt} className="icon"/><br></br>Reuse and<br></br>Update</li>            
+          </ul>
+          <Link to={`/register`} className='registerBtn'>Create Account <FontAwesomeIcon icon={faChevronRight} className="icon"/></Link>
         </section>
         
         <section>
@@ -103,6 +106,11 @@ class LandingPage extends React.Component {
               {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
               <button type="submit" disabled={this.validateUsername() || this.validatePassword()}>Login</button>
             </form>
+        </section>
+        <section className="demoUserCredentials">
+          <p>If you would like to try a demo first,<br></br>please login above using the following credentials:</p>
+          <p>username: Demo_User</p>
+          <p>password: Password1!</p>
         </section>
       </main>
 
