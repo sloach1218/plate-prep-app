@@ -13,7 +13,6 @@ class Nav extends React.Component {
   render(){
     return (
       <nav className='mainNav'>
-          
           <NavLink to={'/home'} className='HomeBtn' activeClassName="selected">My<br></br>Recipes</NavLink>
           <NavLink to={'/add-recipe'} className='AddRecipeBtn' activeClassName="selected">Add<br></br>Recipe</NavLink>
           <NavLink to={'/meal-planner'} className='mealPlannerBtn' activeClassName="selected">Week<br></br>Planner</NavLink>

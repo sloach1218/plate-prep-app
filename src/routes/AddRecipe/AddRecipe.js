@@ -7,8 +7,6 @@ import RecipeApiService from '../../services/recipe-api-service';
 import RecipesContext from '../../Context';
 
 
-
-
 class AddRecipe extends React.Component {
   static contextType = RecipesContext
 
@@ -35,6 +33,7 @@ class AddRecipe extends React.Component {
       ingredients:[],
     };
   }
+
   updateName(name) {
     this.setState({name: { value: name, touched:true }});
   }
@@ -86,7 +85,6 @@ class AddRecipe extends React.Component {
     if (this.state.step.value !== ''){
       directions.push(addLastStep)
     }
-
     
     RecipeApiService.postRecipe({
       name: name.value,
@@ -117,11 +115,8 @@ class AddRecipe extends React.Component {
     })
     this.setState({ingredientamount: { value: ''}});
     this.setState({ingredientname: { value: ''}});}
-    
-
   }
   createAnotherStep(){
-    
     if(this.state.step.value === ''){
 
     } else{
@@ -133,7 +128,6 @@ class AddRecipe extends React.Component {
       })
       this.setState({step: { value: ''}});
     }
-
   }
 
   render(){
@@ -184,9 +178,8 @@ class AddRecipe extends React.Component {
                     value={this.state.ingredientname.value}
                     aria-label="ingredient" />
               </div>
-                
             </div>
-            <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>Add Ingredient +</div>
+            <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>+ Add Ingredient</div>
             <div id='directions'>
               <h3>Directions</h3>
               {this.state.directions && this.state.directions.length !== 0 && <ol>{this.state.directions.map(step=> <li key={step}>{step}</li>)}</ol>}
@@ -201,9 +194,8 @@ class AddRecipe extends React.Component {
                 value={this.state.step.value}
                 aria-label="ingredient" />
             </div>
-            <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}>Add Step +</div>
+            <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}>+ Add Step</div>
             <button type='submit'>Add Recipe</button>
-  
         </form>
       </div>
     );

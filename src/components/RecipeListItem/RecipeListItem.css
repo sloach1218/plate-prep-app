@@ -1,5 +1,5 @@
 .RecipeListItem{
-    padding:5px;
+    padding:5px 40px 5px 5px;
     width: 100%;
     background-color: #fff;
     margin: 5px 10px;
@@ -9,14 +9,18 @@
     position: relative;
     text-align: left;
     border: 1px solid #aaa;
+    height: 65px;
+    max-width: 310px;
 }
 .RecipeListItem:hover{
     box-shadow: 0 0 4px rgb(184, 176, 152);
     color: #66000e;
 }
 .RecipeListItem p{
-    padding: 14px;
+    padding: 14px 0 14px 14px;
     margin: 0;
+    height: 44px;
+    overflow: hidden;
 }
 
 .RecipeListItem .icon{

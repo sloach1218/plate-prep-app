@@ -1,7 +1,8 @@
 .Recipe__details{
   padding: 55px 30px 100px 30px;
-  max-width: 600px;
+  max-width: 550px;
   overflow: auto;
+  margin: 0 auto;
 }
 .Recipe__details ul {
   padding-left: 0;

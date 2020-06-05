@@ -75,6 +75,7 @@ class EditRecipe extends React.Component {
     const { recipes = [] } = this.context;
     const checkForDuplicate = recipes.find(recipe => recipe.name.trim().toLowerCase() === checkName)
 
+    //make sure recipe name not duplicate
     if(checkForDuplicate && checkName !== this.props.location.state.name.trim().toLowerCase()){return}
 
     const { name } = ev.target
@@ -85,6 +86,7 @@ class EditRecipe extends React.Component {
     const addLastIngredient = this.state.ingredientamount.value + ' - ' + this.state.ingredientname.value
     const addLastStep = this.state.step.value
 
+    //check for ingredients and steps that user forgot in the input
     if (this.state.ingredientamount.value !== '' || this.state.ingredientname.value !== ''){
       ingredients.push(addLastIngredient)
     }
@@ -117,7 +119,6 @@ class EditRecipe extends React.Component {
       .catch(res => {
         this.setState({ error: res.error })
       })
-
   }
 
   createAnotherIngredient(){
@@ -134,11 +135,9 @@ class EditRecipe extends React.Component {
     })
     this.setState({ingredientamount: { value: ''}});
     this.setState({ingredientname: { value: ''}});}
-    
-
   }
+
   createAnotherStep(){
-    
     if(this.state.step.value === ''){
 
     } else{
@@ -150,15 +149,14 @@ class EditRecipe extends React.Component {
       })
       this.setState({step: { value: ''}});
     }
-
   }
+
   deleteIngredient(ingredient){
     const ingredientToDelete = ingredient
     const currentIngredients = this.state.ingredients
 
     const newIngredients = currentIngredients.filter(ingredient => ingredient !== ingredientToDelete)
     this.setState({ingredients: newIngredients})
-
   }
 
   deleteStep(step){
@@ -220,8 +218,7 @@ class EditRecipe extends React.Component {
                     value={this.state.ingredientname.value}
                     aria-label="ingredient" />
               </div>
-                
-            </div>
+\            </div>
             <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>Add Ingredient +</div>
             <div id='directions'>
               <h3>Directions</h3>
@@ -239,7 +236,6 @@ class EditRecipe extends React.Component {
             </div>
             <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}>Add Step +</div>
             <button type='submit'>Update Recipe</button>
-  
         </form>
       </div>
     );

@@ -36,13 +36,11 @@ class WeekPlanner extends React.Component {
       date = new Date()
       this.setState({date: date})
     }
-
-    
   }
+
   renderWeek(){
     let date = this.state.date
     const week = getWeek(date);
-
     
     return (
       <div>
@@ -61,59 +59,63 @@ class WeekPlanner extends React.Component {
                       }
                     }}
                     className='addMealBtn'
-                    > Add Meal +</Link>
+                    >+ Add Meal</Link>
             </h2>
-            {/*<button onClick={e => this.showModal(day)}>Add Meal +</button>*/}
             {this.renderMeals(day)}
           </div>
       )}
       </div>
     )
-    
   }
+
   renderMeals(date){
     const { weekPlan = [] } = this.context;
-    
-
     const meals = getMeals(weekPlan, date) || {};
     
     if (meals.breakfast === undefined){return}
    
     return (
       <ul>
-        {meals.breakfast.length > 0 && <h3>Breakfast</h3>}
-        {meals.breakfast.map(recipe =>
-          <li key={recipe}>
-            {recipe}
-          </li>)}
-      
-        {meals.lunch.length > 0 && <h3>Lunch</h3>}
-        {meals.lunch.map(recipe =>
-          <li key={recipe}>
-            {recipe}
-          </li>)}
-        {meals.dinner.length > 0 && <h3>Dinner</h3>}
-        {meals.dinner.map(recipe =>
-          <li key={recipe}>
-            {recipe}
-          </li>)}
-        {meals.snack.length > 0 && <h3>Snack</h3>}
-        {meals.snack.map(recipe =>
-          <li key={recipe}>
-            {recipe}
-          </li>)}
+        {meals.breakfast.length > 0 && <li>
+          <h3>Breakfast</h3>
+          <ul>
+              {meals.breakfast.map(recipe =>
+              <li key={recipe}>
+                {recipe}
+              </li>)}
+          </ul>
+        </li>}
+        {meals.lunch.length > 0 && <li>
+          <h3>Lunch</h3>
+          <ul>
+            {meals.lunch.map(recipe =>
+            <li key={recipe}>
+              {recipe}
+            </li>)}
+          </ul>
+        </li>}
+        {meals.dinner.length > 0 && <li>
+          <h3>Dinner</h3>
+          <ul>
+              {meals.dinner.map(recipe =>
+              <li key={recipe}>
+                {recipe}
+              </li>)}
+          </ul>
+        </li>}
+        {meals.snack.length > 0 && <li>
+          <h3>Snack</h3>
+          <ul>
+            {meals.snack.map(recipe =>
+            <li key={recipe}>
+              {recipe}
+            </li>)}
+          </ul>
+        </li>}
       </ul>
-
-    
     )
   }
   
-  showModal = (day) => {
-    this.setState({
-      show: !this.state.show,
-      addMealDate: day
-    });
-  };
   
   getNextWeek(){
       let date = this.state.date;
@@ -123,9 +125,8 @@ class WeekPlanner extends React.Component {
   getPreviousWeek(){
     let date = this.state.date;
     const lastWeek = new Date(date.getTime() - (7 * 24 * 60 * 60 * 1000));
-    
     this.setState({date: lastWeek})
-}
+  }
  
   
   
@@ -136,7 +137,6 @@ class WeekPlanner extends React.Component {
       <div>
         <Header />
         <Nav />
-        
         <div className="weekPlannerContainer">
           {this.state.date && this.renderWeek()}
         </div>

@@ -32,19 +32,14 @@ class App extends React.Component  {
         }).catch((err) => {
           console.error(err)
         })
-
         PlannerApiService.getMeals()
         .then((meals) => {
           this.updateWeekPlan(meals)
         }).catch((err) => {
           console.error(err)
-        })
-  
-    
-    
+        })    
   }
   updateRecipe = updatedRecipe => {
-    
     this.setState({
       recipes: this.state.recipes.map(recipe => 
         (recipe.id !== Number(updatedRecipe.id)) ? recipe : updatedRecipe
@@ -66,7 +61,6 @@ class App extends React.Component  {
       updateWeekPlan: this.updateWeekPlan,
       updateRecipe: this.updateRecipe,
     }
-    
 
 
     return (

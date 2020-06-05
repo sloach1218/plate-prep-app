@@ -67,7 +67,6 @@ class AddMeal extends React.Component {
     const { weekPlan = [] } = this.context;
   
     const meals = getMeals( weekPlan, date)
-
       
     if (meals !== undefined && meals !== prevState.meals) {  
       this.setState({
@@ -84,7 +83,6 @@ class AddMeal extends React.Component {
 
   renderCurrentPlan(weekPlan){
     const date = this.state.date
-
     const meals = getMeals( weekPlan, date)
 
     if(meals === undefined && this.state.meals === null ){return}
@@ -105,7 +103,6 @@ class AddMeal extends React.Component {
   
   updateMealTime(mealTime) {
     this.setState({mealTime: { value: mealTime, touched:true }});
-    
   }
   updateRecipe(recipe) {
     this.setState({recipe: { value: recipe, touched:true }});
@@ -114,7 +111,6 @@ class AddMeal extends React.Component {
   updateNewRecipeName(name) {
     this.setState({newRecipe: { name: name, touched:true }});
     this.setState({recipe: { value: '', touched:false }});
-    
   }
 
   validateRecipeDoesNotExist(){
@@ -129,7 +125,6 @@ class AddMeal extends React.Component {
 
 
   deleteMeal(recipeToDelete, time){
-    
     if (time === 'breakfast'){
       const breakfast = this.state.breakfast
       const newRecipeList = breakfast.filter(recipe => recipe !== recipeToDelete)
@@ -147,11 +142,10 @@ class AddMeal extends React.Component {
       const newRecipeList = snack.filter(recipe => recipe !== recipeToDelete)
       this.setState({snack: newRecipeList})
     }
-
   }
 
   
-      
+  //Add new recipe to database, form & meal plan
   handleRecipeSubmit = ev => {
     ev.preventDefault()
 
@@ -160,8 +154,6 @@ class AddMeal extends React.Component {
     const checkForDuplicate = recipes.find(recipe => recipe.name.trim().toLowerCase() === name)
 
     if(checkForDuplicate){return}
-
-
 
     const mealTime = this.state.mealTime.value
     const recipe = this.state.recipe.value
@@ -211,8 +203,6 @@ class AddMeal extends React.Component {
     this.setState({mealTime: { value: ''}});
     this.setState({recipe: { value: ''}});
 
-
-    
     if(newRecipeName !== ''){
       RecipeApiService.postRecipe({
         name: newRecipeName,
@@ -235,6 +225,7 @@ class AddMeal extends React.Component {
 
   }
 
+  //Submit Meal Plan
   handleMealPlanSubmit = ev => {
     ev.preventDefault()
 
@@ -264,8 +255,6 @@ class AddMeal extends React.Component {
         ).catch((err) => {
           console.error(err)
         })
-        
-
   }
   
   
@@ -326,7 +315,6 @@ class AddMeal extends React.Component {
             <legend>Current Plan for {this.state.date}</legend>
               {this.renderCurrentPlan(weekPlan)}
             <button type='submit'>Save Meal Plan</button>
-  
         </form>
       </div>
     );

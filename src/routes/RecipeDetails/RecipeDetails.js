@@ -14,15 +14,15 @@ class RecipeDetails extends React.Component {
   renderIngredients(recipe) {
     if(recipe.ingredients){
       return recipe.ingredients.map((ingredient, index) => <li key={index}>{ingredient}</li>)
-      
     }
   }
+
   renderDirections(recipe) {
       if(recipe.directions){
         return recipe.directions.map((step, index) => <li key={index}>{step}</li>)
-        
       }
   }
+
   deleteRecipe(id,name) {
     const recipeId ={
       id: id,
@@ -44,7 +44,6 @@ class RecipeDetails extends React.Component {
     const { recipes = [] } = this.context;
     const recipeId = this.props.match.params.recipeId
     const recipe = getRecipe(recipes, recipeId) || {};
-    
 
     return (
         <div>
@@ -76,8 +75,6 @@ class RecipeDetails extends React.Component {
                   }
                   >Delete Recipe
               </button>
-              
-              
           </main>
         </div>
       

@@ -12,4 +12,10 @@ header h1{
   margin: 6px;
   color: #970014;
   font-weight: 500;
+  display: inline-block;
+}
+header img{
+  max-width: 28px;
+  vertical-align: sub;
+  margin-right: 3px;
 }

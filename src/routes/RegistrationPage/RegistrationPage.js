@@ -1,12 +1,12 @@
 import React from 'react';
 import './RegistrationPage.css';
 import ValidationError from '../../ValidationError';
-import AuthApiService from '../../services/auth-api-service'
+import AuthApiService from '../../services/auth-api-service';
+import Header from '../../components/Header/Header';
 
 
 
 class RegistrationPage extends React.Component {
-  
   
   constructor(props){
     super(props);
@@ -87,9 +87,7 @@ class RegistrationPage extends React.Component {
     
     return (
       <div className="registrationPage"> 
-        <header>
-          <h1>Plate Prep</h1>
-        </header>
+        <Header />
         <form className='RegistrationForm'  onSubmit={e => this.handleSubmit(e)}>
             <div className='RegistrationForm__error' role='alert'>
             </div>

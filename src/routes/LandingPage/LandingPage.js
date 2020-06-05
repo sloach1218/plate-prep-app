@@ -6,6 +6,7 @@ import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faList, faCalendarAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../images/pp_icon_solid.png'
 
 
 
@@ -44,7 +45,6 @@ class LandingPage extends React.Component {
     }
   }
 
-  
 
   handleSubmit = ev => {
     ev.preventDefault()
@@ -71,8 +71,8 @@ class LandingPage extends React.Component {
     
     return (
       <main className="landingPageMain">
-        
         <section className="appDescrip">
+          <img src={logo} className="logo" alt="logo icon"/>
           <h1>Plate Prep</h1>
           <p>Keep your recipes and weekly meal plan all together in one easy to use app!</p>
           <ul className="whyThisAppRocks">
@@ -82,7 +82,6 @@ class LandingPage extends React.Component {
           </ul>
           <Link to={`/register`} className='registerBtn'>Create Account <FontAwesomeIcon icon={faChevronRight} className="icon"/></Link>
         </section>
-        
         <section>
             <form className="login-form" onSubmit={e => this.handleSubmit(e)}>
               <legend>Already have an account?</legend>
