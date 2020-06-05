@@ -218,7 +218,7 @@ class EditRecipe extends React.Component {
                     value={this.state.ingredientname.value}
                     aria-label="ingredient" />
               </div>
-\            </div>
+            </div>
             <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>Add Ingredient +</div>
             <div id='directions'>
               <h3>Directions</h3>
