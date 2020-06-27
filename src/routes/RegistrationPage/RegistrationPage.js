@@ -4,8 +4,7 @@ import ValidationError from '../../ValidationError';
 import AuthApiService from '../../services/auth-api-service';
 import Header from '../../components/Header/Header';
 
-
-
+//form to create an account
 class RegistrationPage extends React.Component {
   
   constructor(props){
@@ -24,8 +23,10 @@ class RegistrationPage extends React.Component {
         touched:false
       },
       error:null,
-    };
+    }
   }
+
+  //form input handlers
   updateUsername(username) {
     this.setState({username: { value: username, touched:true }});
   }
@@ -36,6 +37,7 @@ class RegistrationPage extends React.Component {
     this.setState({reenterPassword: { value: reenterPassword, touched:true }});
   }
 
+  //form validation
   validateUsername(){
     const username = this.state.username.value.trim();
     if (username.length === 0){
@@ -62,11 +64,13 @@ class RegistrationPage extends React.Component {
     }
   }
 
+  //form submit handler
   handleSubmit = ev => {
-    ev.preventDefault()
-    const { username, password } = ev.target
+    ev.preventDefault();
+    const { username, password } = ev.target;
 
     this.setState({ error: null })
+    
     AuthApiService.postUser({
       user_name: username.value,
       password: password.value,
@@ -84,7 +88,6 @@ class RegistrationPage extends React.Component {
   }
 
   render(){
-    
     return (
       <div className="registrationPage"> 
         <Header />
@@ -136,7 +139,6 @@ class RegistrationPage extends React.Component {
               {this.state.reenterPassword.touched && (<ValidationError message={this.validateReenterPassword()} />)}
             </div>
             <button type='submit' disabled={this.validateUsername() || this.validatePassword() || this.validateReenterPassword()}>Create Account</button>
-  
         </form>
       </div>
     );

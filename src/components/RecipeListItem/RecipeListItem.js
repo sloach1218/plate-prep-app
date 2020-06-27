@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import './RecipeListItem.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './RecipeListItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+//renders each recipe as clickable button for the homepage
 export default class RecipeListItem extends Component {
   render() {
     const { recipe } = this.props
@@ -17,8 +18,7 @@ export default class RecipeListItem extends Component {
             <p>{recipe.name}</p>
             <div className="iconDiv"><FontAwesomeIcon icon={faChevronRight} className="icon"/></div>
         </div>
-        </Link>
+      </Link>
     )
   }
 }
-

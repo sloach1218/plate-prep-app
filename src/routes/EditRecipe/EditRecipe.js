@@ -6,9 +6,7 @@ import ValidationError from '../../ValidationError';
 import RecipeApiService from '../../services/recipe-api-service';
 import RecipesContext from '../../Context';
 
-
-
-
+//form to edit a recipe, same setup and validation as add recipe form
 class EditRecipe extends React.Component {
   static contextType = RecipesContext
 
@@ -38,6 +36,7 @@ class EditRecipe extends React.Component {
     };
   }
   
+  //form input handlers
   updateName(name) {
     this.setState({name: { value: name, touched:true }});
   }
@@ -51,7 +50,9 @@ class EditRecipe extends React.Component {
     this.setState({ingredientamount: { value: ingredientamount, touched:true }});
   }
 
+  //form validation
   validateName(){
+    //check value is entered in name input & make sure it's at least 2 characters
     const name = this.state.name.value.trim().toLowerCase();;
     if (name.length === 0){
       return "Name is required"
@@ -59,17 +60,17 @@ class EditRecipe extends React.Component {
       return "Name must be at least 2 characters long"
     }
 
+    //check if name already exists
     const { recipes = [] } = this.context;
     const recipe = recipes.find(recipe => recipe.name.toLowerCase() === name)
-
     if (recipe){
       return "Recipe name already exists"
     }
   }
   
-
+  //form submit handler
   handleSubmit = ev => {
-    ev.preventDefault()
+    ev.preventDefault();
 
     const checkName = this.state.name.value.trim().toLowerCase();
     const { recipes = [] } = this.context;
@@ -86,7 +87,7 @@ class EditRecipe extends React.Component {
     const addLastIngredient = this.state.ingredientamount.value + ' - ' + this.state.ingredientname.value
     const addLastStep = this.state.step.value
 
-    //check for ingredients and steps that user forgot in the input
+    //check for ingredients and steps that user forgot in the input fields
     if (this.state.ingredientamount.value !== '' || this.state.ingredientname.value !== ''){
       ingredients.push(addLastIngredient)
     }
@@ -121,6 +122,7 @@ class EditRecipe extends React.Component {
       })
   }
 
+  //adds ingredient to state ingredients array and clears input fields
   createAnotherIngredient(){
     const amount = this.state.ingredientamount.value;
     const name = this.state.ingredientname.value;
@@ -137,6 +139,7 @@ class EditRecipe extends React.Component {
     this.setState({ingredientname: { value: ''}});}
   }
 
+  //adds step to state directions array and clears input field
   createAnotherStep(){
     if(this.state.step.value === ''){
 
@@ -151,6 +154,7 @@ class EditRecipe extends React.Component {
     }
   }
 
+  //delete ingredient from state
   deleteIngredient(ingredient){
     const ingredientToDelete = ingredient
     const currentIngredients = this.state.ingredients
@@ -159,17 +163,16 @@ class EditRecipe extends React.Component {
     this.setState({ingredients: newIngredients})
   }
 
+  //delete step from state
   deleteStep(step){
     const stepToDelete = step
     const currentSteps = this.state.directions
 
     const newSteps = currentSteps.filter(step => step !== stepToDelete)
     this.setState({directions: newSteps})
-
   }
 
   render(){
-   
     return (
       <div  className="addRecipePage">
         <Header />
@@ -188,7 +191,8 @@ class EditRecipe extends React.Component {
                 onChange={e => this.updateName(e.target.value)}
                 aria-label="Name" 
                 aria-required="true"
-                value={this.state.name.value} />
+                value={this.state.name.value}
+                tabindex="1" />
               {this.state.name.touched && (<ValidationError message={this.validateName()} />)}
             </div>
             <div id='ingredients'>
@@ -204,7 +208,8 @@ class EditRecipe extends React.Component {
                     id='AddRecipeForm__ingredient_amount'
                     onChange={e => this.updateIngredientAmount(e.target.value)}
                     value={this.state.ingredientamount.value}
-                    aria-label="ingredient" />
+                    aria-label="ingredient amount"
+                    tabindex="2" />
               </div>
               <div className="AddRecipeForm__ingredient_name">
                   <label htmlFor='AddRecipeForm__ingedients' >
@@ -216,10 +221,11 @@ class EditRecipe extends React.Component {
                     id='AddRecipeForm__ingredient_name'
                     onChange={e => this.updateIngredientName(e.target.value)}
                     value={this.state.ingredientname.value}
-                    aria-label="ingredient" />
+                    aria-label="ingredient name"
+                    tabindex="3" />
               </div>
             </div>
-            <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}>Add Ingredient +</div>
+            <div id="addDirectionsBtn" onClick={this.createAnotherIngredient.bind(this)}  tabindex="4">Add Ingredient +</div>
             <div id='directions'>
               <h3>Directions</h3>
               {this.state.directions && this.state.directions.length !== 0 && <ol>{this.state.directions.map(step=> <li key={step}>{step} <div onClick={this.deleteStep.bind(this, step)}>delete</div></li>)}</ol>}
@@ -232,10 +238,11 @@ class EditRecipe extends React.Component {
                 id='AddRecipeForm__step'
                 onChange={e => this.updateStep(e.target.value)}
                 value={this.state.step.value}
-                aria-label="ingredient" />
+                aria-label="step"
+                tabindex="5" />
             </div>
-            <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}>Add Step +</div>
-            <button type='submit'>Update Recipe</button>
+            <div id="addstepBtn" onClick={this.createAnotherStep.bind(this)}  tabindex="6">Add Step +</div>
+            <button type='submit'  tabindex="7">Update Recipe</button>
         </form>
       </div>
     );

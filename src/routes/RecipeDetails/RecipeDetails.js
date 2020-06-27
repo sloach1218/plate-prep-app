@@ -7,7 +7,7 @@ import RecipesContext from '../../Context';
 import {getRecipe} from '../../appHelpers';
 import RecipeApiService from '../../services/recipe-api-service';
 
-
+//renders details for a specific recipe
 class RecipeDetails extends React.Component {
   static contextType = RecipesContext
 
@@ -16,7 +16,6 @@ class RecipeDetails extends React.Component {
       return recipe.ingredients.map((ingredient, index) => <li key={index}>{ingredient}</li>)
     }
   }
-
   renderDirections(recipe) {
       if(recipe.directions){
         return recipe.directions.map((step, index) => <li key={index}>{step}</li>)
@@ -38,9 +37,7 @@ class RecipeDetails extends React.Component {
       })
   }
 
-
   render() {
-    
     const { recipes = [] } = this.context;
     const recipeId = this.props.match.params.recipeId
     const recipe = getRecipe(recipes, recipeId) || {};
@@ -50,7 +47,6 @@ class RecipeDetails extends React.Component {
           <Header />
           <Nav />
           <main className='Recipe__details'>
-              
               <h2>{recipe.name}</h2>
               <h3>Ingredients</h3>
               <ul>{this.renderIngredients(recipe)}</ul>
@@ -77,7 +73,6 @@ class RecipeDetails extends React.Component {
               </button>
           </main>
         </div>
-      
     )
   }
 }

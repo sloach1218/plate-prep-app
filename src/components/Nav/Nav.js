@@ -1,9 +1,9 @@
 import React from 'react';
 import './Nav.css';
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 
-
+//renders navigation for logged in user
 class Nav extends React.Component {
   
   handleLogout = () => {

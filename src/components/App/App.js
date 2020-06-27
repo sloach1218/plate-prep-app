@@ -15,17 +15,14 @@ import PlannerApiService from '../../services/planner-api-service';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 
-
-
-
-
 class App extends React.Component  {
   state= {
     recipes: [],
     weekPlan: [],
   }
+
+  //get existing recipes and meal plan to populate app
   componentDidMount(){
-    
       RecipeApiService.getRecipes()
         .then((recipes) => {
           this.updateRecipes(recipes)
@@ -39,6 +36,7 @@ class App extends React.Component  {
           console.error(err)
         })    
   }
+
   updateRecipe = updatedRecipe => {
     this.setState({
       recipes: this.state.recipes.map(recipe => 
@@ -61,8 +59,6 @@ class App extends React.Component  {
       updateWeekPlan: this.updateWeekPlan,
       updateRecipe: this.updateRecipe,
     }
-
-
     return (
       <div className='App'>
         <Context.Provider value={contextValue}>
@@ -102,7 +98,6 @@ class App extends React.Component  {
                   />
         </Switch>
         </Context.Provider>
-        
       </div>
     );
   }

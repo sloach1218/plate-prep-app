@@ -1,6 +1,5 @@
-import config from '../config'
-import TokenService from '../services/token-service'
-
+import config from '../config';
+import TokenService from '../services/token-service';
 
 const PlannerApiService = {
   getMeals(){
@@ -29,8 +28,6 @@ const PlannerApiService = {
           : res.json()
       )
   },
-  
 }
-    
 
-export default PlannerApiService
+export default PlannerApiService;

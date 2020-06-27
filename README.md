@@ -20,7 +20,7 @@ First, add recipes:
 
 Then, create your weekly meal plan with your recipes:
 
-![Meal Planne](src/images/pp_mplanner.png)
+![Meal Planner](src/images/pp_mplanner.png)
 ![Add Meal](src/images/pp_addmeal.png)
 
 

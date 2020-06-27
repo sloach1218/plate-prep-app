@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config';
 
 const TokenService ={
     saveAuthToken(token){
@@ -17,4 +17,4 @@ const TokenService ={
         return !!TokenService.getAuthToken()
     },
 }
-export default TokenService
+export default TokenService;

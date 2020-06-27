@@ -6,10 +6,9 @@ import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faList, faCalendarAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import logo from '../../images/pp_icon_solid.png'
+import logo from '../../images/pp_icon_solid.png';
 
-
-
+//landing page for a user who is not logged in
 class LandingPage extends React.Component {
   constructor(props){
     super(props);
@@ -25,6 +24,8 @@ class LandingPage extends React.Component {
       error: null
     };
   }
+
+  //form input handlers
   updateUsername(username) {
     this.setState({username: { value: username, touched:true }});
   }
@@ -32,6 +33,7 @@ class LandingPage extends React.Component {
     this.setState({password: { value: password, touched:true }});
   }
 
+  //form validation
   validateUsername(){
     const username = this.state.username.value.trim();
     if (username.length === 0){
@@ -45,7 +47,7 @@ class LandingPage extends React.Component {
     }
   }
 
-
+  //form submit handler
   handleSubmit = ev => {
     ev.preventDefault()
     this.setState({ error:null })
@@ -66,9 +68,7 @@ class LandingPage extends React.Component {
       })
   }
 
-
   render(){
-    
     return (
       <main className="landingPageMain">
         <section className="appDescrip">
@@ -112,7 +112,6 @@ class LandingPage extends React.Component {
           <p>password: Password1!</p>
         </section>
       </main>
-
     );
   }
 }

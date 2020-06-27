@@ -8,9 +8,7 @@ import Header from '../../components/Header/Header';
 import Nav from '../../components/Nav/Nav';
 import ValidationError from '../../ValidationError';
 
-
-
-
+//form to add meals to a specific day of planner
 class AddMeal extends React.Component {
   static contextType = RecipesContext
   constructor(props){
@@ -79,8 +77,7 @@ class AddMeal extends React.Component {
     }
   }
 
-  
-
+  //render meals for day
   renderCurrentPlan(weekPlan){
     const date = this.state.date
     const meals = getMeals( weekPlan, date)
@@ -101,6 +98,7 @@ class AddMeal extends React.Component {
     )
   }
   
+  //form input handlers
   updateMealTime(mealTime) {
     this.setState({mealTime: { value: mealTime, touched:true }});
   }
@@ -123,7 +121,6 @@ class AddMeal extends React.Component {
     }
   }
 
-
   deleteMeal(recipeToDelete, time){
     if (time === 'breakfast'){
       const breakfast = this.state.breakfast
@@ -144,8 +141,7 @@ class AddMeal extends React.Component {
     }
   }
 
-  
-  //Add new recipe to database, form & meal plan
+  //handles adding a new recipe to database, form, & meal plan
   handleRecipeSubmit = ev => {
     ev.preventDefault()
 
@@ -225,7 +221,7 @@ class AddMeal extends React.Component {
 
   }
 
-  //Submit Meal Plan
+  //handles submitting updated meal plan
   handleMealPlanSubmit = ev => {
     ev.preventDefault()
 
@@ -234,7 +230,6 @@ class AddMeal extends React.Component {
     const lunch = this.state.lunch
     const dinner = this.state.dinner
     const snack = this.state.snack
-
 
     PlannerApiService.postMeal({
       date: date,
@@ -256,10 +251,6 @@ class AddMeal extends React.Component {
           console.error(err)
         })
   }
-  
-  
-
-
 
   render(){
     const { recipes = [] } = this.context;
@@ -293,7 +284,6 @@ class AddMeal extends React.Component {
                     return <option value={recipe.name} key={recipe.name}>{recipe.name}</option>
                   })}              
               </select>
-              
             </div>
             <p>OR</p>
             <div className='name'>

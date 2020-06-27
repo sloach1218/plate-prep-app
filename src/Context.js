@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const RecipesContext = React.createContext({
   recipes: [],
@@ -8,4 +8,5 @@ const RecipesContext = React.createContext({
   updateWeekPlan: () => {},
   updateRecipe: () => {},
 })
-export default RecipesContext
+
+export default RecipesContext;

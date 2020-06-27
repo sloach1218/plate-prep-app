@@ -1,6 +1,5 @@
-import config from '../config'
-import TokenService from '../services/token-service'
-
+import config from '../config';
+import TokenService from '../services/token-service';
 
 const RecipeApiService = {
   getRecipes(){
@@ -13,9 +12,7 @@ const RecipeApiService = {
       }
     }).then(response => response.json())
   },
-
   postRecipe(recipe) {
-    
     return fetch(`${config.API_RECIPES_ENDPOINT}`, {
       method: 'POST',
       headers: {
@@ -63,8 +60,6 @@ const RecipeApiService = {
       return
     })
   },
-  
 }
-    
 
-export default RecipeApiService
+export default RecipeApiService;
